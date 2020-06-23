@@ -1,0 +1,94 @@
+<div class="account-form">
+  <div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+    <a href="index.html"><img src="assets/images/logo-white-2.png" alt=""></a>
+  </div>
+  <div class="alert alert-success" *ngIf="message_valide" role="alert">
+    <strong>enregistrement effectué avec succès!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error" role="alert">
+    <strong>merci de verifier vos information</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="account-form-inner">
+    <div class="account-container">
+      <div class="heading-bx left">
+        <h2 class="title-head">INSCRIPTION CANDIDAT <span></span></h2>
+        <p>Vous avez un compte! <a routerLink="/Login">Se connecter</a></p>
+      </div>
+      <form class="contact-bx" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="row placeani">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input placeholder="Votre Nom" name="NomCandidat" ngModel type="text" #nom_Candidat="ngModel" required class="form-control">
+                    <p style="font-size:small" *ngIf="nom_Candidat.invalid && nom_Candidat.touched" class="text-danger">
+                      ce champs est obligatoire </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input placeholder="Votre Prenom" ngModel type="text" #prenom_Candidat="ngModel" class="form-control" name="Prenom_Candidat"
+                      required>
+                    <p style="font-size:small" *ngIf="prenom_Candidat.invalid && prenom_Candidat.touched"
+                      class="text-danger">ce champs est obligatoire </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <div class="input-group">
+                <input ngModel type="text" #username="ngModel" class="form-control" name="username" placeholder="Votre Username" required>
+                <p style="font-size:small" *ngIf="username.invalid && username.touched" class="text-danger">ce champs
+                  est obligatoire </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <div class="input-group">
+                <input placeholder="Votre Email" type="email" [email]="true" ngModel #email_Candidat="ngModel" class="form-control"
+                  name="Email_Candidat" required>
+                <p style="font-size:small" *ngIf="email_Candidat.invalid && email_Candidat.touched" class="text-danger">
+                  ce champs est obligatoire </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <div class="input-group">
+                <input placeholder="Votre Numero De Telephone" ngModel type="number" #phone="ngModel" class="form-control" name="phone" required>
+                <p style="font-size:small" *ngIf="phone.invalid && phone.touched" class="text-danger">ce champs
+                  est obligatoire </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <div class="input-group">
+                <input placeholder="Votre Mot De Passe" type="password" ngModel #passwd="ngModel" class="form-control" required name="passwd">
+                <p style="font-size:small" *ngIf="passwd.invalid && passwd.touched" class="text-danger">ce champs est
+                  obligatoire </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 m-b30">
+            <button [disabled]="f.invalid" name="submit" type="submit" value="submit"
+              class="btn button-md">Enregistrer</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

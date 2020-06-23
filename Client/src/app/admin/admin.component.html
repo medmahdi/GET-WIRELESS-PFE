@@ -1,0 +1,61 @@
+<div class="account-form">
+    <div class="account-head" style="background-image:url(assets/images/background/event1.jpg);">
+        <a href="index.html"><img src="assets/images/logo-white-2.png" alt=""></a>
+    </div>
+    <div class="account-form-inner">
+        <div class="account-container">
+            <div class="alert alert-danger" *ngIf="message_error"  role="alert">
+                <strong>merci de verifier vos information</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="heading-bx left">
+                <h2 class="title-head">
+                   Espace  <span>Admin</span></h2>
+         
+            </div>	
+            <form class="contact-bx" (ngSubmit)="onSubmit(f)" #f="ngForm" >
+                <div class="row placeani">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label>Votre Login </label>
+                                <input type="text" ngModel #login="ngModel" name="username" class="form-control"  required >
+                                <p style="font-size: small;" *ngIf="login.invalid && login.touched" class="text-danger" >le champs nom est obligatoire </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="input-group"> 
+                                <label>Votre Mot de passe </label>
+                                <input type="password" ngModel #password="ngModel" name="password" class="form-control" required>
+                                <p style="font-size: small;" *ngIf="password.invalid && password.touched" class="text-danger" >le champs nom est obligatoire </p>
+                            </div>
+                        </div>
+                    </div>
+                   <!--<div class="col-lg-12">
+                        <div class="form-group form-forget">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                                <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+                            </div>
+                            <a href="forget-password.html" class="ml-auto">Forgot Password?</a>
+                        </div>
+                    </div>--> 
+                    <div class="col-lg-12 m-b30">
+                        <button name="submit" [disabled]="f.invalid" type="submit" value="Submit" class="btn button-md">Login</button>
+                    </div>
+                    <!--<div class="col-lg-12">
+                        <h6>Login with Social media</h6>
+                        <div class="d-flex">
+                            <a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
+                            <a class="btn flex-fill m-l5 google-plus" href="#"><i class="fa fa-google-plus"></i>Google Plus</a>
+                        </div>
+                    </div>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

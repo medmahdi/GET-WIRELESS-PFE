@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "assets/css/assets.css";
+@import "assets/css/typography.css";
+@import "assets/css/shortcodes/shortcodes.css";
+
+@import "assets/css/style.css";
+@import "assets/vendors/assets/css/style.css";
+@import "assets/vendors/revolution/css/layers.css";
+@import "assets/vendors/revolution/css/settings.css";
+@import "assets/vendors/revolution/css/navigation.css";
+
+
+@import "assets/vendors/assets/vendors/calendar/fullcalendar.css";
+@import "assets/vendors/assets/css/dashboard.css";
+
+@import "assets/css/color/color-1.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

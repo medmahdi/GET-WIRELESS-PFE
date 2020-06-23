@@ -1,0 +1,114 @@
+<app-menu></app-menu>
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+
+    <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner2.jpg);">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-white">Courses Details</h1>
+             </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="#">Home</a></li>
+                <li>Courses Details</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="content-block">
+  
+    <!-- About Us -->
+    <div class="section-area section-sp1">
+        <div class="container">
+            <div class="row d-flex flex-row-reverse">
+                <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
+                    <div class="course-detail-bx">
+ 
+                        
+  <div class="alert alert-success" *ngIf="message_valide"  role="alert">
+    <strong>enregistrement effectué avec succès!</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error"  role="alert">
+    <strong>merci de verifier vos information</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error1"  role="alert">
+    <strong>vous êtes déjà inscrit dans cette session</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error2"  role="alert">
+    <strong>Nous avons atteint le nombre maximum de membres </strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+                       
+                    </div>
+                </div>  
+                <div class="col-lg-9 col-md-8 col-sm-12">
+                    <div class="courses-post">
+                        <div class="ttr-post-media media-effect">
+                            <a href="#"><img src="assets/images/blog/default/thum1.jpg" alt=""></a> 
+                        </div>
+                        <div class="ttr-post-info">
+                            <div class="ttr-post-title ">
+                                <h2 class="post-title">{{taskService.selectedFormation.titre}}</h2> <button  (click)="downlode(taskService.selectedFormation.programme)" class="btn btn-primary radius-xl text-uppercase">Télécharger programme</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+               
+                
+            </div>
+            <div class="" id="">
+                <h4>Course Description</h4>
+
+                        <p>{{taskService.selectedFormation.description}}</p>
+
+                </div>
+           
+            <div class="" id="instructor">
+                <h4>Liste Des Sessions</h4>
+                <div class="row">
+                    
+                    <div class="col-lg-12">
+            
+                        <table class="table table-hover table bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">Date debut</th>
+                                <th scope="col">Date fin</th>
+                                <th scope="col">formateur</th>
+                                <th scope="col">#</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let sess of taskService.selectedFormation">
+                                <th scope="row">{{sess.date_Debut| date: 'dd/MM/yyyy'}}</th>
+                                <td>{{sess.date_Fin | date: 'dd/MM/yyyy'}}</td>
+                                <td>{{sess.formateur}}</td>
+                                <td><button type="button" class="btn btn-primary btn-sm" (click)="inscription(sess._id)">inscription</button> </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                     
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

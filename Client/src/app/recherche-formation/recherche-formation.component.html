@@ -1,0 +1,75 @@
+<app-menu></app-menu>
+<div class="page-content bg-white">
+<div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner3.jpg);">
+    <div class="container">
+        <div class="page-banner-entry">
+            <h1 class="text-white">Our Courses</h1>
+         </div>
+    </div>
+</div>
+<!-- Breadcrumb row -->
+<div class="breadcrumb-row">
+    <div class="container">
+        <ul class="list-inline">
+            <li><a href="#">Home</a></li>
+            <li>Our Courses</li>
+        </ul>
+    </div>
+</div>
+
+<div class="content-block">
+    <!-- About Us -->
+    <div class="section-area section-sp1">
+        <div class="container">
+             <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
+                    <div class="widget courses-search-bx placeani">
+                        <div class="form-group">
+                            <label>Recherche</label>
+                            <div class="input-group">
+                              
+                                <input (keyup)="onKey($event)" name="name" type="text" required class="form-control">   
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 col-sm-6 m-b30" *ngFor="let formation of taskService.formations">
+                            <div class="cours-bx">
+                                <div class="action-box">
+                                    <img src="assets/images/courses/pic1.jpg" alt="">
+                                    <a href="#" class="btn">Read More</a>
+                                </div>
+                                <div class="info-bx text-center">
+                                    <h5><a [routerLink]="['/Detaile_Formation',formation._id]">{{formation.titre}}</a></h5>
+                                    <span>{{formation.description}}</span>
+                                  </div>
+                                <div class="cours-more-info">
+                                    <div class="review">
+                                        <span>3 Review</span>
+                                        <ul class="cours-star">
+                                            <li class="active"><i class="fa fa-star"></i></li>
+                                            <li class="active"><i class="fa fa-star"></i></li>
+                                            <li class="active"><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

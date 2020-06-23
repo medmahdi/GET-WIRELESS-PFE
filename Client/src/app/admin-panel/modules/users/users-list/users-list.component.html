@@ -1,0 +1,188 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- ************************************************ -->
+          <!-- ************************************************ -->
+
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Ajout">
+              <div class="card-header card-header-danger">
+                <h4 class="card-title ">Formulaire d'Ajout Des Utilisateurs</h4>
+                <p class="card-category">Gestion Des Utilisateurs</p>
+              </div>
+              <div class="card-body">
+                <div class="account-form-inner">
+                  <div class="account-container">
+                    <div class="heading-bx left">
+                      <h2 class="title-head">Créer Un Utilisateur<span></span></h2>
+                    </div>
+                    <form class="contact-bx" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                      <div class="row placeani">
+                        <div class="col-lg-12">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <input placeholder="Votre Nom" name="NomCandidat" ngModel type="text"
+                                    #nom_Candidat="ngModel" required class="form-control">
+                                  <p style="font-size:small" *ngIf="nom_Candidat.invalid && nom_Candidat.touched"
+                                    class="text-danger">
+                                    ce champs est obligatoire </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <input placeholder="Votre Prenom" ngModel type="text" #prenom_Candidat="ngModel"
+                                    class="form-control" name="Prenom_Candidat" required>
+                                  <p style="font-size:small" *ngIf="prenom_Candidat.invalid && prenom_Candidat.touched"
+                                    class="text-danger">ce champs est obligatoire </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input ngModel type="text" #username="ngModel" class="form-control" name="username"
+                                placeholder="Votre Username" required>
+                              <p style="font-size:small" *ngIf="username.invalid && username.touched"
+                                class="text-danger">ce champs
+                                est obligatoire </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input placeholder="Votre Email" type="email" [email]="true" ngModel
+                                #email_Candidat="ngModel" class="form-control" name="Email_Candidat" required>
+                              <p style="font-size:small" *ngIf="email_Candidat.invalid && email_Candidat.touched"
+                                class="text-danger">
+                                ce champs est obligatoire </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input placeholder="Votre Numero De Telephone" ngModel type="number" #phone="ngModel"
+                                class="form-control" name="phone" required>
+                              <p style="font-size:small" *ngIf="phone.invalid && phone.touched" class="text-danger">ce
+                                champs
+                                est obligatoire </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input placeholder="Votre Mot De Passe" type="password" ngModel #passwd="ngModel"
+                                class="form-control" required name="passwd">
+                              <p style="font-size:small" *ngIf="passwd.invalid && passwd.touched" class="text-danger">ce
+                                champs est
+                                obligatoire </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 m-b30 text-center">
+                          <button [disabled]="f.invalid" name="submit" type="submit" value="submit"
+                            class="btn button-md">Ajouter</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Liste">
+              <div class="card-header card-header-danger mt-2">
+                <h4 class="card-title ">Tableau Des Utilisateurs</h4>
+                <p class="card-category">Gestion Des Utilisateurs</p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <mat-form-field style="width:100%">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                  </mat-form-field>
+                  <div class="table-responsive-x" *ngIf="dataSource && dataSource.data.length>0">
+                    <table mat-table [dataSource]="dataSource">
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element;let i = index;"> {{i}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef> username </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.username}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="firstname">
+                        <th mat-header-cell *matHeaderCellDef> firstname </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.firstname}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="lastname">
+                        <th mat-header-cell *matHeaderCellDef> lastname </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.lastname}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef> email </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.email}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="phone">
+                        <th mat-header-cell *matHeaderCellDef> phone </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.phone}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> status </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.status}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> createdAt </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.createdAt | date : 'yyyy/mm/dd'}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="action">
+                        <th class="px-3" mat-header-cell *matHeaderCellDef> Action </th>
+                        <td class="px-3" mat-cell *matCellDef="let element;let i= index;">
+
+                          <button mat-icon-button color="primary" (click)="activateUserStatus(element._id,i)"
+                            *ngIf="!element?.status">
+                            <i class="material-icons">done</i>
+                          </button>
+                          <button mat-icon-button color="primary" (click)="deactivateUserStatus(element._id,i)"
+                            *ngIf="element?.status">
+                            <i class="material-icons">close</i>
+                          </button>
+
+                          <button color="warn" mat-icon-button (click)="deleteById(element._id,i)">
+                            <i class="material-icons">delete</i>
+
+                          </button>
+                        </td>
+                      </ng-container>
+
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>

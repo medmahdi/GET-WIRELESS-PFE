@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title"></div>
+    </div>  
+    <div class="panel-body" >
+        
+<table class="table table-hover table-bordred">
+    <thead>
+      <tr>
+        <th scope="col">Cin</th>
+        <th scope="col">Nom et Prenom</th>
+        <th scope="col">Email</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cand of this.taskService.candidats">
+        <th scope="row">{{cand.numero_cin}}</th>
+        <td>{{cand.nom}} {{cand.prenom}}</td>
+        <td>{{cand.email}}</td>
+       
+      </tr>
+     
+    </tbody>
+  </table>
+     </div>
+</div>
+</div>
+<div class="col-md-2"></div>
+</div>

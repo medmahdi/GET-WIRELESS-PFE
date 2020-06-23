@@ -1,0 +1,134 @@
+<div class="db-breadcrumb">
+    <h4 class="breadcrumb-title">Formation</h4>
+    <ul class="db-breadcrumb-list">
+        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+        <li>Ajouter Formation</li>
+    </ul>
+</div>	
+<div class="alert alert-success" *ngIf="message_valide"  role="alert">
+    <strong>enregistrement effectué avec succès!</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error"  role="alert">
+    <strong>merci de verifier vos information</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="row">
+    <!-- Your Profile Views Chart -->
+    <div class="col-lg-12 m-b30">
+        <div class="widget-box">
+            <div class="wc-title">
+                <h4>Ajouter Formation </h4>
+            </div>
+            <div class="widget-inner">
+                <form class="edit-profile m-b30" (ngSubmit)="onSubmit(f)" #f="ngForm" >
+                    <div class="row">
+                      
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Titre</label>
+                            <div>
+                                <input ngModel type="text" #titre="ngModel" class="form-control" name="Titre"  placeholder="Saisi un Titre"  required>
+                        <p *ngIf="titre.invalid && titre.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Description</label>
+                            <div>
+                                <textarea  ngModel rows="4" cols="50" #description="ngModel" class="form-control" name="Description"  required></textarea>
+                                <p *ngIf="description.invalid && description.touched" class="text-danger" >ce champs  est obligatoire </p>    
+                        
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Charge Horaire</label>
+                            <div>
+                                <input type="number" ngModel #charge_Horaire="ngModel" class="form-control" name="Charge_Horaire"  required>
+                                <p *ngIf="charge_Horaire.invalid && charge_Horaire.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Difficulte</label>
+                            <div>
+                                <div>
+                                    <select name="difficulte" ngModel #difficulte="ngModel" class="form-control">
+                                        <option value="1">débutant</option>
+                                        <option value="2">intermédiaire</option>
+                                        <option value="3">avancé</option>
+                                    </select>
+                                    <p *ngIf="difficulte.invalid && difficulte.touched" class="text-danger" >ce champs  est obligatoire </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="seperator"></div>
+                       
+                        <div class="form-group col-12">
+                            <div class="widget widget_tag_cloud">
+                                <h6 class="widget-title">Liste des Mots cle</h6>
+                                <div class="tagcloud"  #ett id="ett"> 
+                                   <!-- <a href="#">Design</a> 
+                                    <a href="#">User interface</a> 
+                                    <a href="#">SEO</a> 
+                                    <a href="#">WordPress</a> 
+                                    <a href="#">Development</a> 
+                                    <a href="#">Joomla</a> 
+                                    <a href="#">Design</a> 
+                                    <a href="#">User interface</a> 
+                                    <a href="#">SEO</a> 
+                                    <a href="#">WordPress</a> 
+                                    <a href="#">Development</a> 
+                                    <a href="#">Joomla</a> 
+                                    <a href="#">Design</a> 
+                                    <a href="#">User interface</a> 
+                                    <a href="#">SEO</a> 
+                                    <a href="#">WordPress</a> 
+                                    <a href="#">Development</a> 
+                                    <a href="#">Joomla</a> -->
+                                </div>
+                            </div>
+                           
+
+                       
+                        </div>
+                        <div class="form-group col-6">
+                          
+                            <label  class="col-form-label">Mots cle</label>
+                            <div class="row">
+                            <div class="col-8">
+                                <input type="text" ngModel #motscle="ngModel" class="form-control input-sm" name="Mots_Cle" placeholder="" />
+                            </div>
+                                <div class="col-4">
+                                    <button type="button" [disabled]="motscle.invalid && motscle.touched" class="btn btn-success btn-sm" (click)="ajouter_mot(motscle.value)">Ajouter Mot</button>
+                                </div>
+                            </div>
+                                <p *ngIf="motscle.invalid && motscle.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+
+
+                           
+                            <div class="form-group col-6">
+                                <label  class="col-form-label">Programme</label>
+                                <div >
+                                    <input type="file" name="cv" ngModel #cv="ngModel"  (change)="fileProgressPdf($event.target.files)" accept="application/pdf"  required />
+                                    <p *ngIf="cv.invalid && cv.touched" class="text-danger" >ce champs est obligatoire </p>
+                                </div>
+                            </div>
+        
+        
+                    
+
+                        <div class="col-12">
+                          
+                            <button [disabled]="f.invalid" type="submit" class="btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Your Profile Views Chart END-->
+</div>

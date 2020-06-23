@@ -1,0 +1,85 @@
+<div class="db-breadcrumb">
+    <h4 class="breadcrumb-title">Affecter Session</h4>
+    <ul class="db-breadcrumb-list">
+        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+        <li>Affecter Session</li>
+    </ul>
+</div>	
+<div class="alert alert-success" *ngIf="message_valide"  role="alert">
+    <strong>enregistrement effectué avec succès!</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error"  role="alert">
+    <strong>merci de verifier vos information</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="row">
+    <!-- Your Profile Views Chart -->
+    <div class="col-lg-12 m-b30">
+        <div class="widget-box">
+            <div class="wc-title">
+                <h4>Ajouter Formation </h4>
+            </div>
+            <div class="widget-inner">
+                <form class="edit-profile m-b30" (ngSubmit)="onSubmit(f)" #f="ngForm" >
+                    <div class="row">
+                      
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Nom de formateur</label>
+                            <div>
+                                <select #nomform="ngModel" name="nomform" class="form-control" ngModel>
+                               <option *ngFor="let formateur of this.taskService.formateurs"  value={{formateur._id}}>{{formateur.nom}}</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Formation</label>
+                            <div>
+                                <select #listeform="ngModel" name="listeform"  class="form-control" ngModel>
+                                    <option *ngFor="let format of this.taskService.formations" value={{format._id}}>{{format.titre}}</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-12">
+                            <label class="col-form-label">planing</label>
+                            <div>
+                                <textarea  ngModel name="planing"   class="form-control" #planing="ngModel" required></textarea>
+                 
+                                <p *ngIf="planing.invalid && planing.touched" class="text-danger" >ce champs est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Date debut</label>
+                            <div>
+                                <input type="date" ngModel name="date_debut"   class="form-control" #date_debut="ngModel" placeholder="" required>
+                                <p *ngIf="date_debut.invalid && date_debut.touched" class="text-danger" >ce champs est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Date fin</label>
+                            <div>
+                                <div class="col-md-9">
+                                    <input type="date" ngModel name="date_fin"  class="form-control" #date_fin="ngModel" placeholder="" required>
+                                    <p *ngIf="date_fin.invalid && date_fin.touched" class="text-danger" >ce champs est obligatoire </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+        
+                    
+
+                        <div class="col-12">
+                          
+                            <button [disabled]="f.invalid" type="submit" class="btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Your Profile Views Chart END-->
+</div>

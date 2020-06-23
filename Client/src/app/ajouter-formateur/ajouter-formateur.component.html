@@ -1,0 +1,142 @@
+<div class="db-breadcrumb">
+    <h4 class="breadcrumb-title">Formateur</h4>
+    <ul class="db-breadcrumb-list">
+        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+        <li>Ajouter Formateur</li>
+    </ul>
+</div>	
+<div class="alert alert-success" *ngIf="message_valide"  role="alert">
+    <strong>enregistrement effectué avec succès!</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-danger" *ngIf="message_error"  role="alert">
+    <strong>merci de verifier vos information</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="row">
+    <!-- Your Profile Views Chart -->
+    <div class="col-lg-12 m-b30">
+        <div class="widget-box">
+            <div class="wc-title">
+                <h4>Ajouter Formateur </h4>
+            </div>
+            <div class="widget-inner">
+                <form class="edit-profile m-b30" (ngSubmit)="onSubmit(f)" #f="ngForm" >
+                    <div class="row">
+                      
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Nom</label>
+                            <div>
+                                <input ngModel type="text" #nom_formateur="ngModel" class="form-control" name="nom_formateur"  placeholder="Nom de formateur"  required>
+                                <p  *ngIf="nom_formateur.invalid && nom_formateur.touched" class="text-danger" >ce champs est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Prenom</label>
+                            <div>
+                                <input ngModel type="text" #prenom_Formateur="ngModel" class="form-control" name="prenom_Formateur" placeholder="Prenom de formateur"  required>
+                                <p *ngIf="prenom_Formateur.invalid && prenom_Formateur.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Email</label>
+                            <div>
+                                <input type="email" [email]="true" ngModel #email_Formateur="ngModel" class="form-control" name="email_Formateur" placeholder="Email de formateur"  required>
+                                <p *ngIf="email_Formateur.invalid && email_Formateur.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Telephone</label>
+                            <div>
+                                <input type="number" ngModel #tel_Formateur="ngModel" class="form-control" name="tel_Formateur" placeholder="Numero de Télephone"  required>
+                        <p *ngIf="tel_Formateur.invalid && tel_Formateur.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Cin</label>
+                            <div>
+                                <input type="text" ngModel #cin_Formateur="ngModel" class="form-control" name="cin_Formateur" placeholder="Numero de Cin"  required>
+                        <p *ngIf="cin_Formateur.invalid && cin_Formateur.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="seperator"></div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Tarif par heure</label>
+                            <div>
+                                <input type="number" ngModel #Tarif_par_h="ngModel" class="form-control" name="Tarif_par_h" placeholder=""  required>
+                                <p *ngIf="Tarif_par_h.invalid && Tarif_par_h.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+                        <div class="form-group col-12">
+                      
+                            <div class="col-12" >
+                                <div class="row" #ettiquette id="ettiquette">
+
+
+                                </div>
+
+
+                        </div>
+
+                       
+                        </div>
+                        <div class="form-group col-6">
+                          
+                            <label  class="col-form-label">spécialité</label>
+                            <div class="row">
+                            <div class="col-8">
+                                <select name="specialite" ngModel  #specialite="ngModel" class="form-control ">
+                                    <option value="Gestion">Gestion</option>
+                                    <option value="Informatique">Informatique</option>
+                                    <option value="Technologie">Technologie</option>
+                                    <option value="Santé">Santé</option>
+                                </select>
+                            </div>
+                                <div class="col-4">
+                                    <button type="button" class="btn btn-success btn-sm" (click)="ajouter_Specialite(specialite.value)">Ajouter Spécialité</button>
+                                </div>
+                            </div>
+                                <p *ngIf="specialite.invalid && specialite.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+
+
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Photo</label>
+                                <div >
+                                    <input type="file" name="photo" ngModel #photo="ngModel" (change)="fileProgressImage($event.target.files)"  accept="image/*"  required />
+                                    <p *ngIf="photo.invalid && photo.touched" class="text-danger" >ce champs est obligatoire </p>
+                                </div>
+                            </div>
+            
+                            <div class="form-group col-6">
+                                <label  class="col-form-label">Cv</label>
+                                <div >
+                                    <input type="file" name="cv" ngModel #cv="ngModel" (change)="fileProgressPdf($event.target.files)" accept="application/pdf"  required />
+                                    <p *ngIf="cv.invalid && cv.touched" class="text-danger" >ce champs est obligatoire </p>
+                                </div>
+                            </div>
+        
+        
+                        <div class="form-group col-6">
+                            <label  class="col-form-label">Mot de passe</label>
+                            <div >
+                                <input type="password" ngModel #mot_de_passe="ngModel" class="form-control" name="mot_de_passe" placeholder=""  required>
+                                <p *ngIf="mot_de_passe.invalid && mot_de_passe.touched" class="text-danger" >ce champs  est obligatoire </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                          
+                            <button [disabled]="f.invalid" type="submit" class="btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Your Profile Views Chart END-->
+</div>

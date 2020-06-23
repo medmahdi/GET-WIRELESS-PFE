@@ -1,0 +1,26 @@
+<mat-nav-list>
+<div class="profile-card">
+    <div class="header">
+<h2 *ngIf="userDetails.roles[0]=='admin'">Admin</h2>
+<h2 *ngIf="userDetails.roles[0]=='user'">User</h2>
+<h4>{{userDetails?.email}}</h4>
+</div>
+<img src="https://www.pngitem.com/pimgs/m/75-751460_client-broker-consultant-icon-consultant-icon-hd-png.png" alt="Client">
+</div>
+<mat-divider></mat-divider>
+<h2 matSubheader>pages</h2>
+ <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-panel">Dashboard</a>
+ <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-panel/posts">Posts</a>
+ <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a> -->
+ <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin-panel/users" *ngIf="userDetails.roles[0]=='admin'">Users</a>
+<mat-divider></mat-divider>
+<h2 matSubheader>Tools</h2>
+<a mat-list-item routerLinkActive="list-item-active" >
+<mat-icon>import_contacts</mat-icon>
+contacts
+</a>
+<a mat-list-item routerLinkActive="list-item-active" >
+    <mat-icon>contact_phone</mat-icon>
+     contact
+    </a>
+</mat-nav-list>
